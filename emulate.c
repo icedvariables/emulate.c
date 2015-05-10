@@ -19,7 +19,7 @@ typedef int16_t unit;
 unit program[10] = {
     PUSH, 5,
     PUSH, 10,
-    ADD,
+    SUB,
     HALT
 };
 
@@ -33,8 +33,9 @@ unit getInstruction();
 void evalInstruction(unit instr);
 void dump(unit array[], int length);
 void push();
-void pop();
+unit pop();
 void add();
+void sub();
 
 int main(int argc, char **argv){
     printf("Loading program into memory...\n");
@@ -84,6 +85,10 @@ void evalInstruction(unit instr){
         case ADD:
             add();
             break;
+
+        case SUB:
+            sub();
+            break;
     }
 }
 
@@ -105,23 +110,34 @@ void push(){
     ip++;
 }
 
-void pop(){
-    printf("Pop %d\n", stack[sp-1]);
+unit pop(){
+    unit val = stack[sp-1];
     stack[sp-1] = 0;
     sp--;
+
+    printf("Pop %d\n", val);
+
+    return val;
 }
 
 void add(){
-    int num0 = stack[sp-1];
-    int num1 = stack[sp-2];
-
-    stack[sp-1] = 0;
-    stack[sp-2] = 0;
-    sp -= 2;
+    int num0 = pop();
+    int num1 = pop();
 
     stack[sp] = num0 + num1;
 
     printf("%d + %d = %d\n", num0, num1, stack[sp]);
+
+    sp++;
+}
+
+void sub(){
+    int num0 = pop();
+    int num1 = pop();
+
+    stack[sp] = num0 - num1;
+
+    printf("%d - %d = %d\n", num0, num1, stack[sp]);
 
     sp++;
 }
