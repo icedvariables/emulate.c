@@ -11,6 +11,8 @@ typedef enum{
     SET,
     ADD,
     SUB,
+    MUL,
+    DIV,
     HALT
 } Instruction;
 
@@ -34,6 +36,8 @@ void push();
 unit pop();
 void add();
 void sub();
+void mul();
+void div();
 void set();
 
 int main(int argc, char **argv){
@@ -90,6 +94,14 @@ void evalInstruction(unit instr){
             sub();
             break;
 
+        case MUL:
+            mul();
+            break;
+
+        case DIV:
+            div();
+            break;
+
         case SET:
             set();
             break;
@@ -142,6 +154,28 @@ void sub(){
     stack[sp] = num0 - num1;
 
     printf("%d - %d = %d\n", num0, num1, stack[sp]);
+
+    sp++;
+}
+
+void mul(){
+    int num0 = pop();
+    int num1 = pop();
+
+    stack[sp] = num0 * num1;
+
+    printf("%d * %d = %d\n", num0, num1, stack[sp]);
+
+    sp++;
+}
+
+void div(){
+    int num0 = pop();
+    int num1 = pop();
+
+    stack[sp] = num0 / num1;
+
+    printf("%d / %d = %d\n", num0, num1, stack[sp]);
 
     sp++;
 }
