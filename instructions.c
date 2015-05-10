@@ -1,7 +1,3 @@
-void loadProgramIntoMemory(char filename[]);
-unit getInstruction();
-void evalInstruction(unit instr);
-void dump(unit array[], int length, int pointer);
 void push();
 unit pop();
 void add();
