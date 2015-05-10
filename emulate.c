@@ -19,7 +19,9 @@ typedef enum{
 typedef int16_t unit;
 
 unit program[10] = {
-    SET, 10, 69,
+    PUSH, 10,
+    PUSH, 2,
+    SUB,
     HALT
 };
 
@@ -148,8 +150,8 @@ void add(){
 }
 
 void sub(){
-    int num0 = pop();
     int num1 = pop();
+    int num0 = pop();
 
     stack[sp] = num0 - num1;
 
@@ -170,8 +172,8 @@ void mul(){
 }
 
 void div(){
-    int num0 = pop();
     int num1 = pop();
+    int num0 = pop();
 
     stack[sp] = num0 / num1;
 
