@@ -15,7 +15,9 @@ typedef enum{
     DIV,
     JUMP,
     HALT,
-    PRINT
+    PRINT,
+    JUMPIFEQUAL,
+    JUMPIFNOTEQUAL
 } Instruction;
 
 typedef uint8_t unit;
@@ -110,6 +112,14 @@ void evalInstruction(unit instr){
 
         case PRINT:
             print();
+            break;
+
+        case JUMPIFEQUAL:
+            jumpIfEqual();
+            break;
+
+        case JUMPIFNOTEQUAL:
+            jumpIfNotEqual();
             break;
 
         default:

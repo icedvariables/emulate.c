@@ -7,7 +7,8 @@ void div();
 void set();
 void jump();
 void print();
-
+void jumpIfEqual();
+void jumpIfNotEqual();
 
 
 void push(){
@@ -93,5 +94,25 @@ void jump(){
 void print(){
     unit val = pop();
 
-    printf("%d", val);
+    printf("OUTPUT: %d\n", val);
+}
+
+void jumpIfEqual(){
+    unit num0 = pop();
+    unit num1 = pop();
+
+    printf("jump if equal %d == %d\n", num0, num1);
+
+    if(num0 == num1)
+        jump();
+}
+
+void jumpIfNotEqual(){
+    unit num0 = pop();
+    unit num1 = pop();
+
+    printf("jump if not equal %d != %d\n", num0, num1);
+
+    if(num0 != num1)
+        jump();
 }
