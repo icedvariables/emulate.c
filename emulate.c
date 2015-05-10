@@ -29,15 +29,6 @@ void loadProgramIntoMemory(char filename[]);
 unit getInstruction();
 void evalInstruction(unit instr);
 void dump(unit array[], int length, int pointer);
-void push();
-unit pop();
-void add();
-void sub();
-void mul();
-void div();
-void set();
-void jump();
-void print();
 
 #include "instructions.c"
 
