@@ -17,9 +17,7 @@ typedef enum{
 typedef int16_t unit;
 
 unit program[10] = {
-    PUSH, 5,
-    PUSH, 10,
-    SUB,
+    SET, 69, 10,
     HALT
 };
 
@@ -36,6 +34,7 @@ void push();
 unit pop();
 void add();
 void sub();
+void set();
 
 int main(int argc, char **argv){
     printf("Loading program into memory...\n");
@@ -58,6 +57,9 @@ int main(int argc, char **argv){
     }
 
     printf("Halting...");
+
+    printf("\nMemory ");dump(memory, 20);
+    printf("\nStack ");dump(stack, 10);
 
     return 0;
 }
@@ -88,6 +90,10 @@ void evalInstruction(unit instr){
 
         case SUB:
             sub();
+            break;
+
+        case SET:
+            set();
             break;
     }
 }
@@ -140,4 +146,15 @@ void sub(){
     printf("%d - %d = %d\n", num0, num1, stack[sp]);
 
     sp++;
+}
+
+void set(){
+    unit val = memory[ip+1];
+    unit pos = memory[ip+2];
+
+    memory[pos] = val;
+
+    ip += 2;
+
+    printf("set memory position %d = %d\n", pos, val);
 }
