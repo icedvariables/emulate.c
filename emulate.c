@@ -39,7 +39,7 @@ int main(int argc, char **argv){
     printf("Entering main loop...\n");
 
     for(int loopIteration = 0;;loopIteration++){
-        printf("\n\nMain loop %d: ip=%d sp=%d\n", loopIteration, ip, sp);
+        printf("\n=============================\n");
 
         unit instr = getInstruction();
 
@@ -50,6 +50,7 @@ int main(int argc, char **argv){
 
         ip++;
 
+        printf("\n\nMain loop %d: ip=%d sp=%d\n", loopIteration, ip, sp);
         printf("\nStack ");dump(stack, 5, sp);
         printf("Memory ");dump(memory, 15, ip);
     }
