@@ -23,8 +23,8 @@ unit program[10] = {
 
 unit memory[512] = {0};
 unit stack[64] = {0};
-unit ip = 0;
-unit sp = 0;
+unit ip = 0; // Instruction pointer
+unit sp = 0; // Stack pointer
 
 void loadProgramIntoMemory();
 unit getInstruction();
@@ -39,8 +39,6 @@ void set();
 int main(int argc, char **argv){
     printf("Loading program into memory...\n");
     loadProgramIntoMemory();
-
-    dump(memory, 10);
 
     printf("Entering main loop...\n");
     while(true){
