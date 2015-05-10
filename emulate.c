@@ -17,22 +17,14 @@ typedef enum{
     HALT
 } Instruction;
 
-typedef int16_t unit;
-
-unit program[10] = {
-    PUSH, 10,
-    PUSH, 5,
-    ADD,
-    JUMP, 2,
-    HALT
-};
+typedef uint8_t unit;
 
 unit memory[512] = {0};
 unit stack[64] = {0};
 unit ip = 0; // Instruction pointer
 unit sp = 0; // Stack pointer
 
-void loadProgramIntoMemory();
+void loadProgramIntoMemory(char filename[]);
 unit getInstruction();
 void evalInstruction(unit instr);
 void dump(unit array[], int length, int pointer);
@@ -47,7 +39,7 @@ void jump();
 
 int main(int argc, char **argv){
     printf("Loading program into memory...\n");
-    loadProgramIntoMemory();
+    loadProgramIntoMemory(argv[1]);
 
     printf("Entering main loop...\n");
 
@@ -74,10 +66,11 @@ int main(int argc, char **argv){
     return 0;
 }
 
-void loadProgramIntoMemory(){
-	for(int i = 0; i < 10; i++){
-        memory[i] = program[i];
-    }
+void loadProgramIntoMemory(char filename[]){
+	FILE *f;
+
+    f = fopen(filename, "rb");
+    fread(memory, sizeof(memory), 1, f);
 }
 
 unit getInstruction(){
