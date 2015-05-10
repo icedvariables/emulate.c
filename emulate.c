@@ -40,8 +40,6 @@ int main(int argc, char **argv){
 
     for(int loopIteration = 0;;loopIteration++){
         printf("\n\nMain loop %d: ip=%d sp=%d\n", loopIteration, ip, sp);
-        printf("\nStack ");dump(stack, 5, sp);
-        printf("Memory ");dump(memory, 10, sp);
 
         unit instr = getInstruction();
 
@@ -51,6 +49,9 @@ int main(int argc, char **argv){
             evalInstruction(instr);
 
         ip++;
+
+        printf("\nStack ");dump(stack, 5, sp);
+        printf("Memory ");dump(memory, 15, ip);
     }
 
     printf("Halting...");
