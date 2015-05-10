@@ -5,12 +5,14 @@
 #define true 1
 #define false 0
 
-#define PUSH 1
-#define POP 2
-#define SET 3
-#define ADD 4
-#define SUB 5
-#define HALT 6
+typedef enum{
+    PUSH = 1,
+    POP,
+    SET,
+    ADD,
+    SUB,
+    HALT
+} Instruction;
 
 typedef int16_t unit;
 
