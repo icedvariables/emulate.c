@@ -16,8 +16,8 @@ unit pop(){
 }
 
 void add(){
-    int num0 = pop();
-    int num1 = pop();
+    unit num0 = pop();
+    unit num1 = pop();
 
     stack[sp] = num0 + num1;
 
@@ -27,8 +27,8 @@ void add(){
 }
 
 void sub(){
-    int num1 = pop();
-    int num0 = pop();
+    unit num1 = pop();
+    unit num0 = pop();
 
     stack[sp] = num0 - num1;
 
@@ -38,8 +38,8 @@ void sub(){
 }
 
 void mul(){
-    int num0 = pop();
-    int num1 = pop();
+    unit num0 = pop();
+    unit num1 = pop();
 
     stack[sp] = num0 * num1;
 
@@ -49,8 +49,8 @@ void mul(){
 }
 
 void div(){
-    int num1 = pop();
-    int num0 = pop();
+    unit num1 = pop();
+    unit num0 = pop();
 
     stack[sp] = num0 / num1;
 
