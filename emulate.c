@@ -20,7 +20,7 @@ typedef enum{
 
 typedef uint8_t unit;
 
-unit memory[512] = {0};
+unit memory[1024] = {0};
 unit stack[64] = {0};
 unit ip = 0; // Instruction pointer
 unit sp = 0; // Stack pointer
