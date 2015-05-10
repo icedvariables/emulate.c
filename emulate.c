@@ -29,8 +29,7 @@ unit sp = 0;
 void loadProgramIntoMemory();
 unit getInstruction();
 void evalInstruction(unit instr);
-void memoryDump(int length);
-void stackDump(int length);
+void dump(unit array[], int length);
 void push();
 void pop();
 void add();
@@ -39,11 +38,11 @@ int main(int argc, char **argv){
     printf("Loading program into memory...\n");
     loadProgramIntoMemory();
 
-    memoryDump(10);
+    dump(memory, 10);
 
     printf("Entering main loop...\n");
     while(true){
-        stackDump(5);
+        dump(stack, 5);
 
         unit instr = getInstruction();
 
@@ -86,25 +85,16 @@ void evalInstruction(unit instr){
     }
 }
 
-void memoryDump(int length){
-    printf("\nMemory dump (length=%d):\n", length);
+void dump(unit array[], int length){
+    printf("Dump (length=%d):\n", length);
 
     for(int i = 0; i < length; i++){
-        printf("%d: %d\n", i, memory[i]);
+        printf("%d: %d\n", i, array[i]);
     }
 
     printf("\n\n");
 }
 
-void stackDump(int length){
-    printf("\nStack dump (length=%d):\n", length);
-
-    for(int i = 0; i < length; i++){
-        printf("%d: %d\n", i, stack[i]);
-    }
-
-    printf("\n\n");
-}
 
 void push(){
     printf("Pushing %d\n", memory[ip+1]);
