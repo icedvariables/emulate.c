@@ -13,16 +13,17 @@ typedef enum{
     SUB,
     MUL,
     DIV,
+    JUMP,
     HALT
 } Instruction;
 
 typedef int16_t unit;
 
 unit program[10] = {
-    SET, 6, 8,
     PUSH, 10,
     PUSH, 5,
     ADD,
+    JUMP, 0,
     HALT
 };
 
@@ -34,7 +35,7 @@ unit sp = 0; // Stack pointer
 void loadProgramIntoMemory();
 unit getInstruction();
 void evalInstruction(unit instr);
-void dump(unit array[], int length);
+void dump(unit array[], int length, int pointer);
 void push();
 unit pop();
 void add();
@@ -42,6 +43,7 @@ void sub();
 void mul();
 void div();
 void set();
+void jump();
 
 int main(int argc, char **argv){
     printf("Loading program into memory...\n");
@@ -49,7 +51,7 @@ int main(int argc, char **argv){
 
     printf("Entering main loop...\n");
     while(true){
-        dump(stack, 5);
+        dump(stack, 5, sp);
 
         unit instr = getInstruction();
 
@@ -63,8 +65,8 @@ int main(int argc, char **argv){
 
     printf("Halting...");
 
-    printf("\nMemory ");dump(memory, 20);
-    printf("\nStack ");dump(stack, 10);
+    printf("\nMemory ");dump(memory, 20, ip);
+    printf("\nStack ");dump(stack, 10, sp);
 
     return 0;
 }
@@ -108,13 +110,21 @@ void evalInstruction(unit instr){
         case SET:
             set();
             break;
+
+        case JUMP:
+            jump();
+            break;
     }
 }
 
-void dump(unit array[], int length){
+void dump(unit array[], int length, int pointer){
     printf("Dump (length=%d):\n", length);
 
     for(int i = 0; i < length; i++){
+        if(pointer == i)
+            printf("--> ");
+        else
+            printf("    ");
         printf("%d: %d\n", i, array[i]);
     }
 
@@ -123,7 +133,7 @@ void dump(unit array[], int length){
 
 
 void push(){
-    printf("Pushing %d\n", memory[ip+1]);
+    printf("pushing %d\n", memory[ip+1]);
     stack[sp] = memory[ip+1];
     sp++;
     ip++;
@@ -134,7 +144,7 @@ unit pop(){
     stack[sp-1] = 0;
     sp--;
 
-    printf("Pop %d\n", val);
+    printf("pop %d\n", val);
 
     return val;
 }
@@ -192,4 +202,12 @@ void set(){
     ip += 2;
 
     printf("set memory position %d = %d\n", pos, val);
+}
+
+void jump(){
+    unit pos = memory[ip+1];
+
+    ip = pos;
+
+    printf("jump to memory location %d\n", pos);
 }
