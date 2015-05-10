@@ -23,7 +23,7 @@ unit program[10] = {
     PUSH, 10,
     PUSH, 5,
     ADD,
-    JUMP, 0,
+    JUMP, 2,
     HALT
 };
 
@@ -50,8 +50,11 @@ int main(int argc, char **argv){
     loadProgramIntoMemory();
 
     printf("Entering main loop...\n");
-    while(true){
-        dump(stack, 5, sp);
+
+    for(int loopIteration = 0;;loopIteration++){
+        printf("Main loop %d: ip=%d sp=%d\n", loopIteration, ip, sp);
+        printf("Stack ");dump(stack, 5, sp);
+        printf("Memory ");dump(memory, 10, sp);
 
         unit instr = getInstruction();
 
@@ -114,6 +117,9 @@ void evalInstruction(unit instr){
         case JUMP:
             jump();
             break;
+
+        default:
+            printf("Unknown value %d - ignoring", instr);
     }
 }
 
@@ -207,7 +213,7 @@ void set(){
 void jump(){
     unit pos = memory[ip+1];
 
-    ip = pos;
+    ip = pos - 1; // have to minus 1 because the main loop increases the ip straight after
 
     printf("jump to memory location %d\n", pos);
 }
