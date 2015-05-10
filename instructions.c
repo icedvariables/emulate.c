@@ -9,6 +9,8 @@ void jump();
 void print();
 void jumpIfEqual();
 void jumpIfNotEqual();
+void jumpIfNotGreaterThan();
+void jumpIfNotLessThan();
 
 
 void push(){
@@ -114,5 +116,25 @@ void jumpIfNotEqual(){
     printf("jump if not equal %d != %d\n", num0, num1);
 
     if(num0 != num1)
+        jump();
+}
+
+void jumpIfGreaterThan(){
+    unit num0 = pop();
+    unit num1 = pop();
+
+    printf("jump if greater than %d > %d\n", num0, num1);
+
+    if(num0 > num1)
+        jump();
+}
+
+void jumpIfLessThan(){
+    unit num0 = pop();
+    unit num1 = pop();
+
+    printf("jump if less than %d < %d\n", num0, num1);
+
+    if(num0 < num1)
         jump();
 }
