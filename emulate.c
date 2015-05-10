@@ -17,7 +17,7 @@ typedef enum{
 typedef int16_t unit;
 
 unit program[10] = {
-    SET, 69, 10,
+    SET, 10, 69,
     HALT
 };
 
@@ -149,8 +149,8 @@ void sub(){
 }
 
 void set(){
-    unit val = memory[ip+1];
-    unit pos = memory[ip+2];
+    unit pos = memory[ip+1];
+    unit val = memory[ip+2];
 
     memory[pos] = val;
 
