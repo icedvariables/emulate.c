@@ -77,3 +77,9 @@ void jump(){
 
     printf("jump to memory location %d\n", pos);
 }
+
+void print(){
+    unit val = pop();
+
+    printf("%d", val);
+}

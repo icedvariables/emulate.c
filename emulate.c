@@ -14,7 +14,8 @@ typedef enum{
     MUL,
     DIV,
     JUMP,
-    HALT
+    HALT,
+    PRINT
 } Instruction;
 
 typedef uint8_t unit;
@@ -36,6 +37,7 @@ void mul();
 void div();
 void set();
 void jump();
+void print();
 
 #include "instructions.c"
 
@@ -111,6 +113,10 @@ void evalInstruction(unit instr){
 
         case JUMP:
             jump();
+            break;
+
+        case PRINT:
+            print();
             break;
 
         default:
