@@ -19,9 +19,10 @@ typedef enum{
 typedef int16_t unit;
 
 unit program[10] = {
+    SET, 6, 8,
     PUSH, 10,
-    PUSH, 2,
-    SUB,
+    PUSH, 5,
+    ADD,
     HALT
 };
 
