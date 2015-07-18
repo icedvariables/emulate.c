@@ -1,4 +1,8 @@
 void push(){
+    /*
+     * Push a value onto the stack.
+     */
+
     printf("pushing %d\n", memory[ip+1]);
     stack[sp] = memory[ip+1];
     sp++;
@@ -6,6 +10,10 @@ void push(){
 }
 
 unit pop(){
+    /*
+     * Pop a value off the stack.
+     */
+
     unit val = stack[sp-1];
     stack[sp-1] = 0;
     sp--;
@@ -16,6 +24,10 @@ unit pop(){
 }
 
 void add(){
+    /*
+     * Pop two values off the stack, add them together and push the result.
+     */
+
     unit num0 = pop();
     unit num1 = pop();
 
@@ -27,6 +39,11 @@ void add(){
 }
 
 void sub(){
+    /*
+     * Pop two values off the stack, subtract the top value from the other and
+     * push the result.
+     */
+
     unit num1 = pop();
     unit num0 = pop();
 
@@ -38,6 +55,10 @@ void sub(){
 }
 
 void mul(){
+    /*
+     * Pop two values off the stack, multiply them and push the result.
+     */
+
     unit num0 = pop();
     unit num1 = pop();
 
@@ -49,6 +70,11 @@ void mul(){
 }
 
 void div(){
+    /*
+     * Pop two values off the stack, divide the second to top value by the top
+     * and push the result.
+     */
+
     unit num1 = pop();
     unit num0 = pop();
 
@@ -60,6 +86,10 @@ void div(){
 }
 
 void set(){
+    /*
+     * Set memory[top of stack] to the value second to the top of stack.
+     */
+
     unit pos = memory[ip+1];
     unit val = memory[ip+2];
 
@@ -71,6 +101,10 @@ void set(){
 }
 
 void jump(){
+    /*
+     * Jump to memory location at the top of the stack.
+     */
+
     unit pos = memory[ip+1];
 
     ip = pos - 1; // have to minus 1 because the main loop increases the ip straight after
@@ -79,12 +113,21 @@ void jump(){
 }
 
 void print(){
+    /*
+     * Output the value at the top of the stack
+     */
+
     unit val = pop();
 
     printf("OUTPUT: %d\n", val);
 }
 
 void jumpIfEqual(){
+    /*
+     * Jump to the memory location at the third to the top of the stack if the first
+     * and second value on the stack are equal.
+     */
+
     unit num0 = pop();
     unit num1 = pop();
 
@@ -95,6 +138,11 @@ void jumpIfEqual(){
 }
 
 void jumpIfNotEqual(){
+    /*
+     * Jump to the memory location at the third to the top of the stack if the first
+     * and second value on the stack are not equal.
+     */
+
     unit num0 = pop();
     unit num1 = pop();
 
@@ -105,6 +153,10 @@ void jumpIfNotEqual(){
 }
 
 void jumpIfGreaterThan(){
+    /*
+     * Jump to the memory location at the third to the top of the stack if the first
+     * value is greater than the second.
+     */
     unit num0 = pop();
     unit num1 = pop();
 
@@ -115,6 +167,11 @@ void jumpIfGreaterThan(){
 }
 
 void jumpIfLessThan(){
+    /*
+     * Jump to the memory location at the third to the top of the stack if the first
+     * value is less than the second.
+     */
+
     unit num0 = pop();
     unit num1 = pop();
 
