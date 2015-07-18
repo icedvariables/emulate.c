@@ -15,7 +15,8 @@ typedef enum{
     JUMPIFEQUAL,
     JUMPIFNOTEQUAL,
     JUMPIFGT,
-    JUMPIFLT
+    JUMPIFLT,
+    PRINTCHAR
 } Instruction;
 
 typedef uint8_t unit;
@@ -126,6 +127,10 @@ void evalInstruction(unit instr){
 
         case JUMPIFLT:
             jumpIfLessThan();
+            break;
+
+        case PRINTCHAR:
+            printChar();
             break;
 
         default:

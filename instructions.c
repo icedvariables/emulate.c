@@ -180,3 +180,13 @@ void jumpIfLessThan(){
     if(num0 < num1)
         jump();
 }
+
+void printChar(){
+    /*
+     * Display the value at the top of the stack as an ASCII character.
+     */
+
+     unit val = pop();
+
+     printf("OUTPUT: %c\n", val);
+}
