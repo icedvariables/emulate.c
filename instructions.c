@@ -1,18 +1,3 @@
-void push();
-unit pop();
-void add();
-void sub();
-void mul();
-void div();
-void set();
-void jump();
-void print();
-void jumpIfEqual();
-void jumpIfNotEqual();
-void jumpIfNotGreaterThan();
-void jumpIfNotLessThan();
-
-
 void push(){
     printf("pushing %d\n", memory[ip+1]);
     stack[sp] = memory[ip+1];

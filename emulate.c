@@ -34,7 +34,7 @@ unit getInstruction();
 void evalInstruction(unit instr);
 void dump(unit array[], int length, int pointer);
 
-#include "instructions.c"
+#include "instructions.h"
 
 int main(int argc, char **argv){
     printf("Loading program into memory...\n");
