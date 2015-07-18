@@ -16,7 +16,8 @@ typedef enum{
     JUMPIFNOTEQUAL,
     JUMPIFGT,
     JUMPIFLT,
-    PRINTCHAR
+    PRINTCHAR,
+    DUPLICATE
 } Instruction;
 
 typedef uint8_t unit;
@@ -131,6 +132,10 @@ void evalInstruction(unit instr){
 
         case PRINTCHAR:
             printChar();
+            break;
+
+        case DUPLICATE:
+            duplicate();
             break;
 
         default:

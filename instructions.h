@@ -12,5 +12,6 @@ void jumpIfNotEqual();
 void jumpIfNotGreaterThan();
 void jumpIfNotLessThan();
 void printChar();
+void duplicate();
 
 #include "instructions.c"

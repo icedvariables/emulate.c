@@ -190,3 +190,18 @@ void printChar(){
 
      printf("OUTPUT: %c\n", val);
 }
+
+void duplicate(){
+    /*
+     * Pop the value at the top of the stack then push it back on twice.
+     */
+
+     unit val = pop();
+
+     stack[sp] = val;
+     stack[sp+1] = val;
+
+     printf("duplicated %d", val);
+
+     sp += 2;
+}
