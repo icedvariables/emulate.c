@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <stdint.h>
 
-// C doesn't have booleans...
-#define true 1
-#define false 0
-
 typedef enum{
     PUSH = 1,
     POP,
